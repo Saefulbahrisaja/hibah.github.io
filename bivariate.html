@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Analisa Kuantitativ Variable Bivariate</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="bivariate">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+	  <div class="navbar-brand" href="#"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<li><a href="index.html">Univariate</a></li>
+			<li class="active"><a href="#">Bivariate</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container-fluid">
+    
+    <!-- - Tabs  -->
+    <div class="row">
+	<div class="col-md-4 col-lg-3 sidebar">
+
+	    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+		<!-- Panel données -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingData">
+			<h4 class="panel-title">
+			    <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+			    <a role="button" data-toggle="collapse" href="#collapseData" aria-expanded="true" aria-controls="collapseData">
+				 Sumber Data
+			    </a>
+			</h4>
+		    </div>
+		    <div id="collapseData" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingData">
+			<div class="panel-body">
+
+
+			    <!-- Formulaire données -->
+			    <div>
+				<ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#tab-data-manual" aria-controls="tab-data-manual" role="tab" data-toggle="tab">Manual</a></li>
+				    <li role="presentation"><a href="#tab-data-random" aria-controls="tab-data-random" role="tab" data-toggle="tab">Acak</a></li>
+				    <li role="presentation"><a href="#tab-dataset" aria-controls="tab-dataset" role="tab" data-toggle="tab">Dataset</a></li>
+				</ul>
+				<div class="tab-content">
+				    <!-- Données manuelles -->
+				    <div role="tabpanel" class="tab-pane fade in active" id="tab-data-manual">
+				      <form id="form_manual_data" action="#">
+					  <div class="form-group">
+					      <label for="data_manual_x">Nilai Variable (x)</label>
+					      <input id="data_manual_x" type="text" class="form-control" value="8, 12, 14, 10, 16, 4, 11, 7, 18, 9, 6" placeholder="Ex : 125, 57, 198, 12, 45...">
+					  </div>
+					  <div class="form-group">
+					      <label for="data_manual_y">Nilai Variable (y)</label>
+					      <input id="data_manual_y" type="text" class="form-control" value="6, 13, 10, 9, 17, 8, 9, 8, 16, 10, 11" placeholder="Ex : 120, 67, 204, 2, 25...">
+					    </div>
+					    <button type="submit" class="btn btn-primary btn-sm" id="data_manual_submit">Update</button>
+					</form>
+				    </div>
+				    <!-- Données aléatoires -->
+				    <div role="tabpanel" class="tab-pane fade" id="tab-data-random">
+					<form id="form_random_data" action="#">
+					    <!-- X -->
+					    <div class="form-group">
+						<label for="data_law_x">Distribusi Data variable (x) </label>
+						<select class="form-control" id="data_law_x">
+						    <option value="uniforme" selected>Uniform</option>
+						    <option value="normale">Normal</option>
+						</select>
+					    </div>
+					    <div class="form-horizontal" id="data_uniform_args_x">
+						<div class="form-group">
+						    <label for="data_uniform_min_x" class="col-sm-5 control-label">Minimum</label>
+						    <div class="col-sm-7">
+							<input type="number" class="form-control" id="data_uniform_min_x" value="0" />
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="data_uniform_max_x" class="col-sm-5 control-label">Maximum</label>
+						    <div class="col-sm-7">
+							<input type="number" class="form-control" id="data_uniform_max_x" value="100" />
+						    </div>
+						</div>
+					    </div>
+					    <div class="form-horizontal" id="data_normal_args_x">
+						<div class="form-group">
+						    <label for="data_normal_mean_x" class="col-sm-5 control-label">Mean</label>
+						    <div class="col-sm-7">
+					    		<input type="number" class="form-control" id="data_normal_mean_x" value="50" />
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="data_normal_sd_x" class="col-sm-5 control-label">Standard deviasi</label>
+						    <div class="col-sm-7">
+							<input type="number" class="form-control" id="data_normal_sd_x" value="5" />
+						    </div>
+						</div>
+					    </div>
+
+					    <!-- Y -->
+					    <div class="form-group">
+						<label for="data_law_y">Distribusi Data variable (y)</label>
+						<select class="form-control" id="data_law_y">
+						    <option value="uniforme" selected>Uniform</option>
+						    <option value="normale">Normal</option>
+						</select>
+					    </div>
+					    <div class="form-horizontal" id="data_uniform_args_y">
+						<div class="form-group">
+						    <label for="data_uniform_min_y" class="col-sm-5 control-label">Minimum</label>
+						    <div class="col-sm-7">
+							<input type="number" class="form-control" id="data_uniform_min_y" value="0" />
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="data_uniform_max_y" class="col-sm-5 control-label">Maximum</label>
+						    <div class="col-sm-7">
+							<input type="number" class="form-control" id="data_uniform_max_y" value="100" />
+						    </div>
+						</div>
+					    </div>
+					    <div class="form-horizontal" id="data_normal_args_y">
+						<div class="form-group">
+						    <label for="data_normal_mean_y" class="col-sm-5 control-label">Mean</label>
+						    <div class="col-sm-7">
+					    		<input type="number" class="form-control" id="data_normal_mean_y" value="50" />
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="data_normal_sd_y" class="col-sm-5 control-label">Standard deviasi</label>
+						    <div class="col-sm-7">
+							<input type="number" class="form-control" id="data_normal_sd_y" value="5" />
+						    </div>
+						</div>
+					    </div>
+					    
+					    <div class="form-group">
+						<label for="nb_values">Jumlah Sample</label>
+						<input type="number" class="form-control" id="nb_values" min="2" max="5000" value="100" />
+					    </div>
+					    <button class="btn btn-primary btn-sm" type="submit" id="data_random_submit">Generate</button>
+					</form>
+				    </div>
+				    <!-- Jeux de données -->
+				    <div role="tabpanel" class="tab-pane fade in" id="tab-dataset">
+					<form id="form_dataset" action="#">
+					    <div class="form-group">
+						<label for="data_dataset">Dataset</label>
+						<select class="form-control" id="data_dataset">
+						  <option value="lifeexp_gdp_europe_2007" selected>Data Usia harapan hidup vs GDP per capita Eropa</option>
+					  	  <option value="lifeexp_gdp_world_2007">Data Usia harapan hidup vs GDP per capita Dunia</option>
+						  <option value="galton_1886">Data Hubungan tinggi Badan Anak dan Orang tua </option>
+						</select>
+					    </div>
+					    <button type="submit" class="btn btn-primary btn-sm" id="data_dataset_submit">Load</button>
+					</form>
+				    </div>
+
+				</div>
+
+			    </div>
+
+
+			</div>
+		    </div>
+		</div>
+
+		<!-- Panel points -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingPoints">
+			<h4 class="panel-title">
+			    <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapsePoints" aria-expanded="false" aria-controls="collapsePoints">
+				 Pengaturan Grafik
+			    </a>
+			</h4>
+		    </div>
+		    <div id="collapsePoints" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPoints">
+			<div class="panel-body">
+			    <div class="form-group">
+				<label for="points_size">Ukuran Titik</label>
+				<input id="points_size" type="range" min="5" max="500" value="120" />
+			    </div>
+			    <div class="form-group">
+				<label for="points_opacity">Transparansi Titik</label>
+				<input id="points_opacity" type="range" min="0.01" max="1" value="0.8" step="0.01"/>
+			    </div>
+			    <div class="checkbox" id="points_show_rugs">
+				<label>
+				    <input id="show_rugs" type="checkbox" checked="checked"> Tampilkan garis bantu
+				</label>
+			    </div>
+			    <div class="checkbox" id="points_show_labels">
+				<label>
+				    <input id="show_labels" type="checkbox" value=""> Tamppilkan label
+				</label>
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+		<!-- Panel indicateurs -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingIndicateurs">
+			<h4 class="panel-title">
+			    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseIndicateurs" aria-expanded="false" aria-controls="collapseIndicateurs">
+				 Statistics
+			    </a>
+			</h4>
+		    </div>
+		    <div id="collapseIndicateurs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingIndicateurs">
+			<div class="panel-body">
+			    <div class="checkbox">
+				<label>
+				    <input id="stats_mean" type="checkbox"> Mean
+				</label>
+			    </div>
+			    <div class="checkbox">
+				<label>
+				    <input id="stats_sd" type="checkbox"> Standard deviasi
+				</label>
+			    </div>
+			    <div class="checkbox">
+				<label>
+				    <input id="stats_cov" type="checkbox"> Covariance and linear correlation (Pearson)
+				</label>
+			    </div>
+			    <div class="checkbox">
+				<label>
+				    <input id="stats_spearman" type="checkbox"> Ranking correlation (Spearman)
+				</label>
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+		<!-- Panel graphiques -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingGraphiques">
+			<h4 class="panel-title">
+			    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseGraphiques" aria-expanded="false" aria-controls="collapseGraphiques">
+				 Regresi
+			    </a>
+			</h4>
+		    </div>
+		    <div id="collapseGraphiques" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGraphiques">
+			<div class="panel-body">
+			    <div class="checkbox">
+				<label>
+				    <input id="manual_line" type="checkbox"> Manual line
+				</label>
+			    </div>
+			    <div class="form-horizontal" id="manual_line_options">
+				<div class="form-group">
+				    <label for="manual_slope" class="col-sm-5 control-label">Slope</label>
+				    <div class="col-sm-7">
+					<input type="number" class="form-control" id="manual_slope" value="1" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="manual_intercept" class="col-sm-5 control-label">Intercept</label>
+				    <div class="col-sm-7">
+					<input type="number" class="form-control" id="manual_intercept" value="0" />
+				    </div>
+				</div>
+				<div class="checkbox" style="margin-left: 30px;">
+				    <label>
+					<input id="manual_errors" type="checkbox"> Tampilkan residuals
+				    </label>
+				</div>
+			    </div>
+			    <div class="checkbox">
+				<label>
+				    <input id="reg_line" type="checkbox"> Linear regression line
+				</label>
+			    </div>
+			    <div class="form-horizontal" id="reg_line_options">
+				<div class="form-group">
+				    <label for="reg_predict" class="col-sm-5 control-label">Predict value</label>
+				    <div class="col-sm-7">
+					<input type="number" step="any" class="form-control" id="reg_predict" value="" />
+				    </div>
+				</div>
+				<div class="checkbox" style="margin-left: 30px;">
+				    <label>
+					<input id="reg_errors" type="checkbox">  Show residuals
+				    </label>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+		
+		<!-- Panel axe -->
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingAxe">
+			<h4 class="panel-title">
+			    <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseAxe" aria-expanded="false" aria-controls="collapseAxe">
+				 Axes
+			    </a>
+			</h4>
+		    </div>
+		    <div id="collapseAxe" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAxe">
+			<div class="panel-body">
+			    <div class="checkbox">
+				<label>
+				    <input id="coord_fixed" type="checkbox"> Fixed ratio
+				</label>
+			    </div>
+			    <button type="submit" class="btn btn-sm" id="coord_switch">Switch axes</button>
+			    <div class="checkbox">
+				<label>
+				    <input id="x_manual" type="checkbox"> Manual x limits
+				</label>
+			    </div>
+			    <div class="form-horizontal" id="x_limits">
+				<div class="form-group">
+				    <label for="x_min" class="col-sm-5 control-label">x minimum</label>
+				    <div class="col-sm-7">
+					<input type="number" class="form-control" id="x_min" value="0" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="x_max" class="col-sm-5 control-label">x maximum</label>
+				    <div class="col-sm-7">
+					<input type="number" class="form-control" id="x_max" value="100" />
+				    </div>
+				</div>
+			    </div>
+			    <div class="checkbox">
+				<label>
+				    <input id="y_manual" type="checkbox"> Manual y limits
+				</label>
+			    </div>
+			    <div class="form-horizontal" id="y_limits">
+				<div class="form-group">
+				    <label for="y_min" class="col-sm-5 control-label">y minimum</label>
+				    <div class="col-sm-7">
+					<input type="number" class="form-control" id="y_min" value="0" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="y_max" class="col-sm-5 control-label">y maximum</label>
+				    <div class="col-sm-7">
+					<input type="number" class="form-control" id="y_max" value="100" />
+				    </div>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+		
+	    </div>
+	</div>
+
+	    
+    <!-- Plot -->
+        <div class="col-md-8 col-lg-9">
+	    <div id="plot">
+            </div>
+	    <div class="row">
+		<div id="manualtable" class="col-sm-6">
+		    <table class="table table-condensed">
+			<thead>
+			    <tr><th>Manual line</th><th></th></tr>
+			</thead>
+			<tbody>
+			    <tr><td>Slope</td><td id="man-slope"></td></tr>
+			    <tr><td>Intercept</td><td id="man-intercept"></td></tr>
+			    <tr class="warning"><td>Squared residuals</td><td id="man-error"></td></tr>
+			</tbody>
+		    </table>
+		</div>
+		<div id="regtable" class="col-sm-6">
+		    <table class="table table-condensed">
+			<thead>
+			    <tr><th>Regression line</th><th></th></tr>
+			</thead>
+			<tbody>
+			    <tr><td>Slope</td><td id="reg-slope"></td></tr>
+			    <tr><td>Intercept</td><td id="reg-intercept"></td></tr>
+			    <tr class="warning"><td>Squared residuals</td><td id="reg-error"></td></tr>
+			    <tr class="info"><td>R<sup>2</sup></td><td id="reg-r2"></td></tr>
+			</tbody>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </div>
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/lib/l10n.js"></script>
+    <script>String.locale = "en";</script>
+    <script src="js/l10n/localizations.js"></script>
+    <script src="js/lib/d3.min.js"></script>
+    <script src="js/lib/simple-statistics.min.js"></script>
+    <!-- init jquery js -->
+    <script src="js/bivariate/init.js"></script>
+    <!-- datasets js -->
+    <script src="data/bivariate.js"></script>
+    <!-- plot js -->
+    <script src="js/bivariate/plot-utils.js"></script>
+    <script src="js/bivariate/plot-export.js"></script>
+    <script src="js/bivariate/plot-axes.js"></script>
+    <script src="js/bivariate/plot-setup.js"></script>
+    <script src="js/bivariate/plot-dots.js"></script>
+    <script src="js/bivariate/plot-lines.js"></script>
+    <script src="js/bivariate/plot-errors.js"></script>
+    <script src="js/bivariate/plot-predict.js"></script>
+    <script src="js/bivariate/plot-stats.js"></script>
+    <script src="js/bivariate/plot.js"></script>
+    
+  </body>
+</html>
