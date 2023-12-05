@@ -1,392 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <title>AISTETIK </title>
+	<title>AISTETIK</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+	<link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/style.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    </head>
 
-  </head>
+    <body>
 
-  <body id="univariate">
-
-    <!-- Fixed navbar -->
-    <nav class="navbar  navbar-static-top ">
-      <div class="container-fluid">
-        <div class="navbar-header ">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-	  <div class="navbar-brand" href="#"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span></div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Univariate</a></li>
-	      <li><a href="bivariate.html">Bivariate</a></li>
-	      <li><a href="about.html">About</a></li>
-            </ul>
-	    <ul class="nav navbar-nav navbar-right">
-		<!-- <li class="active"><a href="#">en</a></li>
-		<li><a href="index-fr.html">fr</a></li> -->
-            </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-
-    <div class="container-fluid">
-    
-    <!-- - Tabs  -->
-    <div class="row">
-	<div class="col-md-4 col-lg-3 sidebar">
-
-	    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-		<!-- Panel données -->
-		<div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingData">
-			<h4 class="panel-title">
-			    <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-			    <a role="button" data-toggle="collapse" href="#collapseData" aria-expanded="true" aria-controls="collapseData">
-				 Sumber Data
-			    </a>
-			</h4>
-		    </div>
-		    <div id="collapseData" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingData">
-			<div class="panel-body">
-
-
-			    <!-- Formulaire données -->
-			    <div>
-				<ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" class="active"><a href="#tab-data-manual" aria-controls="tab-data-manual" role="tab" data-toggle="tab">Manual</a></li>
-				    <li role="presentation"><a href="#tab-data-random" aria-controls="tab-data-random" role="tab" data-toggle="tab">Acak</a></li>
-				    <li role="presentation"><a href="#tab-dataset" aria-controls="tab-dataset" role="tab" data-toggle="tab">Dataset</a></li>
-				</ul>
-				<div class="tab-content">
-				    <!-- Données manuelles -->
-				    <div role="tabpanel" class="tab-pane fade in active" id="tab-data-manual">
-					<form id="form_manual_data" action="#">
-					    <div class="form-group">
-						<label for="data_manual">Input Angka dipisahkan dengan koma (,)</label>
-						<input id="data_manual" type="text" class="form-control" placeholder="Ex : 125, 57, 198, 12, 45...">
-					    </div>
-					    <button type="submit" class="btn btn-success btn-sm" id="data_manual_submit">Update</button>
-					</form>
-				    </div>
-				    <!-- Données aléatoires -->
-				    <div role="tabpanel" class="tab-pane fade" id="tab-data-random">
-					<form id="form_random_data" action="#">
-					    <div class="form-group">
-						<label for="data_law">Distribusi Data</label>
-						<select class="form-control" id="data_law">
-						    <option value="uniforme" selected>Uniform</option>
-						    <option value="normale">Normal</option>
-						</select>
-					    </div>
-					    <div class="form-horizontal" id="data_uniform_args">
-						<div class="form-group">
-						    <label for="data_uniform_min" class="col-sm-5 control-label">Minimum</label>
-						    <div class="col-sm-7">
-							<input type="number" class="form-control" id="data_uniform_min" value="0" />
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="data_uniform_max" class="col-sm-5 control-label">Maximum</label>
-						    <div class="col-sm-7">
-							<input type="number" class="form-control" id="data_uniform_max" value="100" />
-						    </div>
-						</div>
-					    </div>
-					    <div class="form-horizontal" id="data_normal_args">
-						<div class="form-group">
-						    <label for="data_normal_mean" class="col-sm-5 control-label">Mean</label>
-						    <div class="col-sm-7">
-					    		<input type="number" class="form-control" id="data_normal_mean" value="50" />
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="data_normal_sd" class="col-sm-5 control-label">Standard deviasi</label>
-						    <div class="col-sm-7">
-							<input type="number" class="form-control" id="data_normal_sd" value="5" />
-						    </div>
-						</div>
-					    </div>
-					    <div class="form-group">
-						<label for="nb_values">Jumlah sample</label>
-						<input type="number" class="form-control" id="nb_values" min="2" max="5000" value="100" />
-					    </div>
-					    <button class="btn btn-success btn-sm" type="submit" id="data_random_submit">Generate</button>
-					</form>
-				    </div>
-				    <!-- Jeux de données -->
-				    <div role="tabpanel" class="tab-pane fade in" id="tab-dataset">
-					<form id="form_dataset" action="#">
-					    <div class="form-group">
-						<label for="data_dataset">Dataset</label>
-						<select class="form-control" id="data_dataset">
-						    <option value="life_expectancy_2014" selected>Data harapan hidup per negara </option>
-						    <option value="age_meres_2015">Data Usia ibu saat melahikan anak</option>
-						    <option value="population_departements_2013">Data kependudukan</option>
-						    <option value="densite_departements_2013">Data kepadatan penduduk (ppl/km²)</option>
-						    <option value="kung_heights">Data tinggi badan manusia </option>
-						</select>
-					    </div>
-					    <button type="submit" class="btn btn-success btn-sm" id="data_dataset_submit">Load</button>
-					</form>
-				    </div>
-
-				</div>
-
-			    </div>
-
-
-			</div>
-		    </div>
+	<!-- Fixed navbar -->
+	<nav class="navbar  navbar-static-top">
+	    <div class="container-fluid">
+		<div class="navbar-header">
+		    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		    </button>
+		    <div class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span></div>
 		</div>
-
-		<!-- Panel points -->
-		<div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingPoints">
-			<h4 class="panel-title">
-			    <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapsePoints" aria-expanded="false" aria-controls="collapsePoints">
-				 Pengaturan Grafik
-			    </a>
-			</h4>
-		    </div>
-		    <div id="collapsePoints" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPoints">
-			<div class="panel-body">
-			    <div class="form-group">
-				<label for="points_size">Ukuran Titik</label>
-				<input id="points_size" type="range" min="5" max="500" value="120" />
-			    </div>
-			    <div class="form-group">
-				<label for="points_opacity">Transparansi Titik</label>
-				<input id="points_opacity" type="range" min="0.01" max="1" value="0.8" step="0.01"/>
-			    </div>
-			    <div class="checkbox">
-				<label>
-				    <input id="points_jitter" type="checkbox" value=""> Jitter
-				</label>
-			    </div>
-			    <div class="checkbox" id="points_show_labels">
-				<label>
-				    <input id="show_labels" type="checkbox" value=""> Tampilkan Label
-				</label>
-			    </div>
-			</div>
-		    </div>
-		</div>
-
-		<!-- Panel indicateurs -->
-		<div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingIndicateurs">
-			<h4 class="panel-title">
-			    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseIndicateurs" aria-expanded="false" aria-controls="collapseIndicateurs">
-				 Statistik
-			    </a>
-			</h4>
-		    </div>
-		    <div id="collapseIndicateurs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingIndicateurs">
-			<div class="panel-body">
-			    <div class="checkbox">
-				<label>
-				    <input id="stats_mean" type="checkbox"> Mean
-				</label>
-			    </div>
-			    <div class="checkbox">
-				<label>
-				    <input id="stats_median" type="checkbox"> Median
-				</label>
-			    </div>
-			    <div class="checkbox">
-				<label>
-				    <input id="stats_quartiles" type="checkbox"> Quartiles
-				</label>
-			    </div>
-			    <div class="checkbox">
-				<label>
-				    <input id="stats_sd" type="checkbox"> Standard deviasi
-				</label>
-			    </div>
-			</div>
-		    </div>
-		</div>
-
-		<!-- Panel graphiques -->
-		<div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingGraphiques">
-			<h4 class="panel-title">
-			    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseGraphiques" aria-expanded="false" aria-controls="collapseGraphiques">
-				 Tampilan Grafik
-			    </a>
-			</h4>
-		    </div>
-		    <div id="collapseGraphiques" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGraphiques">
-			<div class="panel-body">
-			    <div class="form-group">
-				<label for="graph_type">Pilih Grafik Yang Akan ditampilkan</label>
-				<select class="form-control" id="graph_type">
-				    <option value="none" selected>None</option>
-				    <option value="hist">Histogram</option>
-				    <option value="boxplot">Boxplot</option>
-				    <option value="kde">Garis</option>
-				</select>
-			    </div>
-			    <div class="form-horizontal" id="graph_hist_args">
-				<div class="form-group">
-				    <label for="hist_classes" class="col-sm-7 control-label">Jumlah of bins</label>
-				    <div class="col-sm-5">
-					<input type="number" class="form-control" id="hist_classes" min="2" max="1000" value="20" />
-				    </div>
-				</div>
-				<div class="checkbox col-sm-12">
-				    <label>
-					<input id="hist_exact" type="checkbox" checked> Exact bins
-				    </label>
-				</div>
-				<div class="checkbox col-sm-12">
-				    <label>
-					<input id="hist_percent" type="checkbox"> Percentages
-				    </label>
-				</div>
-				<div class="checkbox col-sm-12">
-				    <label>
-					<input id="hist_labels" type="checkbox" checked> Show values
-				    </label>
-				</div>
-			    </div>
-			    <div class="form-horizontal" id="graph_kde_args">
-				<div class="form-group">
-				    <label for="kde_scale" class="col-sm-7 control-label">Bandwidth</label>
-				    <div class="col-sm-5">
-					<input type="number" class="form-control" id="kde_scale" min="0" value="7" />
-				    </div>
-				</div>
-			    </div>
-			</div>
-		    </div>
-		</div>
-
-		
-		<!-- Panel axe -->
-		<div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingAxe">
-			<h4 class="panel-title">
-			    <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
-			    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseAxe" aria-expanded="false" aria-controls="collapseAxe">
-				 Axes
-			    </a>
-			</h4>
-		    </div>
-		    <div id="collapseAxe" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAxe">
-			<div class="panel-body">
-			    <div class="checkbox">
-				<label>
-				    <input id="x_manual" type="checkbox"> Manual x limits
-				</label>
-			    </div>
-			    <div class="form-horizontal" id="x_limits">
-				<div class="form-group">
-				    <label for="x_min" class="col-sm-5 control-label">x minimum</label>
-				    <div class="col-sm-7">
-					<input type="number" class="form-control" id="x_min" value="0" />
-				    </div>
-				</div>
-				<div class="form-group">
-				    <label for="x_max" class="col-sm-5 control-label">x maximum</label>
-				    <div class="col-sm-7">
-					<input type="number" class="form-control" id="x_max" value="100" />
-				    </div>
-				</div>
-			    </div>
-			    <div class="checkbox">
-				<label>
-				    <input id="y_manual" type="checkbox"> Manual y limits
-				</label>
-			    </div>
-			    <div class="form-horizontal" id="y_limits">
-				<div class="form-group">
-				    <label for="y_min" class="col-sm-5 control-label">y minimum</label>
-				    <div class="col-sm-7">
-					<input type="number" class="form-control" id="y_min" value="0" />
-				    </div>
-				</div>
-				<div class="form-group">
-				    <label for="y_max" class="col-sm-5 control-label">y maximum</label>
-				    <div class="col-sm-7">
-					<input type="number" class="form-control" id="y_max" value="100" />
-				    </div>
-				</div>
-			    </div>
-			</div>
-		    </div>
-		</div>
-
-		
+		<div id="navbar" class="navbar-collapse collapse">
+		    <ul class="nav navbar-nav">
+		      <li><a href="univariate.html">Univariate</a></li>
+		      <li><a href="bivariate.html">Bivariate</a></li>
+		      <li class="active"><a href="#">About</a></li>
+		    </ul>
+		   
+		</div><!--/.nav-collapse -->
 	    </div>
-	</div>
+	</nav>
 
+
+	<div class="container-fluid">
 	    
-    <!-- Plot -->
-        <div class="col-md-8 col-lg-9">
-	    <div id="plot">
-            </div>
-	</div>
-    </div>
+	    <div class="row">
+		<div class="col-sm-8 col-sm-offset-2 ">
+
+		    <h1>About</h1>
+
+		    <p>Tujuan aplikasi ini adalah menyediakan antarmuka interaktif untuk membantu mempelajari dan mengajarkan analisis dan visualisasi variabel kuantitatif dasar univariat dan bivariat.</p>
+		    <p>Anda dapat menampilkan statistik dan visualisasi dasar, Anda kemudian dapat bermain-main dengan parameter, memperbesar, menggeser, menyeret titik data, dan semuanya harus diperbarui secara dinamis dengan transisi.</p>
+
+		    <h2>Sumber Data</h2>
+		    <p>Data dapat diketik secara manual, dihasilkan secara acak dari beberapa distribusi, atau Anda dapat memuat kumpulan data sederhana yang disertakan. <b>PERHATIAN BAHWA DATA YANG DI MUAT BUKAN DATA SEBENARNYA HANYA DATA DUMMY SAJA</b></p>
+
+		    <!-- <h3>Univariate datasets</h3> -->
+
+		    <!-- <table class="table table-striped">
+			<thead><tr><th>Title</th><th>Description</th><th>Note</th><th>Source</th></tr></thead>
+			<tbody>
+			    <tr>
+				<td>Life expectancy by country</td>
+				<td>Life expectancy at birth, by country, in 2014</td>
+				<td></td>
+				<td><a href="http://data.worldbank.org/indicator/SP.DYN.LE00.IN">World bank</a></td>
+			    </tr>
+			    <tr>
+				<td>Mother age at child birth</td>
+				<td>Sample of 2000 mother ages at child birth, in France, in 2015. Only ages from 18 to 45 (included) are taken into account.</td>
+				<td>An example of integer-only quantitative variable, following a slightly skewed normal distribution.</td>
+				<td><a href="https://www.insee.fr/fr/statistiques/2406436">Insee</a></td>
+			    </tr>
+			    <tr>
+				<td>Departments population</td>
+				<td>Population of each french department in 2013</td>
+				<td></td>
+				<td><a href="https://fr.wikipedia.org/wiki/Liste_des_d%C3%A9partements_fran%C3%A7ais_class%C3%A9s_par_population_et_superficie">Wikipedia</a></td>
+			    </tr>
+			    <tr>
+				<td>Departments population density</td>
+				<td>Population density of each french department (in people per km²) in 2013</td>
+				<td>An example of the influence of outliers on statistics and visualization.</td>
+				<td><a href="https://fr.wikipedia.org/wiki/Liste_des_d%C3%A9partements_fran%C3%A7ais_class%C3%A9s_par_population_et_superficie">Wikipedia</a></td>
+			    </tr>
+			    <tr>
+				<td>!Kung people heights</td>
+				<td>Heights (in cm) from partial census data for the Dobe area !Kung San, compiled from interviews conducted by Nancy Howell in the late 1960s.</td>
+				<td>A bimodal dataset due to men and women heights having different distributions.</td>
+				<td><a href="https://github.com/rmcelreath/rethinking/blob/master/data/Howell1.csv"><em>Statistical rethinking</em> book dataset</td>
+			    </tr>
+			</tbody>
+		    </table>
 
 
-    </div> <!-- /container -->
+		    <h3>Bivariate datasets</h3>
+
+		    <table class="table table-striped">
+			<thead><tr><th>Title</th><th>Description</th><th>Note</th><th>Source</th></tr></thead>
+			<tbody>
+			    <tr>
+				<td>Life expectancy vs GDP per capita</td>
+				<td>European countries, 2007</td>
+				<td></td>
+				<td><a href="https://cran.r-project.org/web/packages/gapminder/index.html">Gapminder R package</a></td>
+			    </tr>
+			    <tr>
+				<td>Life expectancy vs GDP per capita</td>
+				<td>World countries, 2007</td>
+				<td>Example of non linear relationship</td>
+				<td><a href="https://cran.r-project.org/web/packages/gapminder/index.html">Gapminder R package</a></td>
+			    </tr>
+			  <tr>
+				<td>928 children height and their mid-parents heights</td>
+				<td>Francis Galton, 1886</td>
+				<td>Historical dataset, used to show the concept of regression towards the mean.</td>
+				<td><a href="https://cran.r-project.org/web/packages/Galton/index.html">Galton R package</a></td>
+			    </tr>
+			</tbody>
+		    </table> -->
+
+		    
+		    <!-- <h2>Links and credits</h2>
+
+		    <ul>
+			<li>The source code of this app is freely available <a href="https://github.com/juba/uniquanti">on Github</a> under an MIT license.</li>
+			<li>Interface powered by <a href="https://getbootstrap.com">Bootstrap</a></li>
+			<li>Graphics powered by <a href="https://d3js.org/">D3.js</a></li>
+			<li>Regression calculations by <a href="https://github.com/simple-statistics/simple-statistics">simple-statistics</a></li>
+		    </ul> -->
+
+		</div>
+	    </div>
+	</div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="js/lib/l10n.js"></script>
-    <script>String.locale = "en";</script>
-    <script src="js/l10n/localizations.js"></script>
-    <script src="js/lib/d3.min.js"></script>
-    <!-- init jquery js -->
-    <script src="js/univariate/init.js"></script>
-    <!-- datasets js -->
-    <script src="data/univariate.js"></script>
-    <!-- plot js -->
-    <script src="js/univariate/plot-utils.js"></script>
-    <script src="js/univariate/plot-export.js"></script>
-    <script src="js/univariate/plot-axes.js"></script>
-    <script src="js/univariate/plot-setup.js"></script>
-    <script src="js/univariate/plot-dots.js"></script>
-    <script src="js/univariate/plot-lines.js"></script>
-    <script src="js/univariate/plot-stats.js"></script>
-    <script src="js/univariate/plot-histogram.js"></script>
-    <script src="js/univariate/plot-boxplot.js"></script>
-    <script src="js/univariate/plot-kde.js"></script>
-    <script src="js/univariate/plot.js"></script>
-    
-  </body>
+		<!-- Bootstrap core JavaScript
+		     ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		
+    </body>
 </html>
